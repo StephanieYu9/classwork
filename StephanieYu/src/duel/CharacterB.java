@@ -12,4 +12,10 @@ public class CharacterB implements Dueler
 			String name = ("Carlos");
 			return name;
 		}
+		public void setStartingHP(int hp) {
+			public int getHP() {
+				
+			}
+			return HP;
+		}
 }
