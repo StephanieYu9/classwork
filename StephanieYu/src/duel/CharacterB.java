@@ -18,4 +18,19 @@ public class CharacterB implements Dueler
 		public int getHP() {
 			return hp;
 		}
+		public boolean determineIfOpponentIsFair(Dueler d, int hp) {
+			if(d == hp)
+				return true;
+		}
+		public int getAction(Object caller) {
+			
+		}
+		public void hit(Object caller) {
+			if(isAction == true) {
+				hp = hp - 10;
+			}	
+		}
+		public boolean isAction(Object o){
+			return o instanceof Duel;
+		}
 }
