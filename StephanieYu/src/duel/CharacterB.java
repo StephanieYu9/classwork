@@ -1,7 +1,9 @@
 package duel;
 
-public class CharacterB implements Dueler 
+public class CharacterB implements Dueler
 {
+	private int hp = 100; 
+	
 	public CharacterB() {
 	}
 		public void taunt() {
@@ -16,22 +18,23 @@ public class CharacterB implements Dueler
 			System.out.println(hp);
 		}
 		public int getHP() {
-			int hp = 100;
 			return hp;
 		}
 		public boolean determineIfOpponentIsFair(Dueler d, int hp) {
-			if(d == hp)
+			if (d.getHP() == 100) {
 				return true;
+			}
+			return false;
 		}
 		public int getAction(Object caller) {
+			if(caller instanceof Duel) {
+				
+			}
 			
 		}
 		public void hit(Object caller) {
-			if(isAction == true) {
-				hp = hp - 10;
-			}	
-		}
-		public boolean isAction(Object o){
-			return o instanceof Duel;
+			if(caller instanceof Duel) {
+				hp = hp-10;
+			}
 		}
 }
