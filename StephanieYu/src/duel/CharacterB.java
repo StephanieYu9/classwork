@@ -16,6 +16,7 @@ public class CharacterB implements Dueler
 			System.out.println(hp);
 		}
 		public int getHP() {
+			int hp = 100;
 			return hp;
 		}
 		public boolean determineIfOpponentIsFair(Dueler d, int hp) {
