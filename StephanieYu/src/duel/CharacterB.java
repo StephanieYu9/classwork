@@ -42,11 +42,12 @@ public class CharacterB implements Dueler
 					}
 					lastMove = 2;
 				if (isLoaded == true && lastMove == 2) {
-					return Duel.SHOOTING
+					return Duel.SHOOTING;
 				}
 				isLoaded = false;
 				lastMove = 1;
 			}
+			return Duel.YEAH_RIGHT;
 			
 		}
 		public void hit(Object caller) {
