@@ -20,7 +20,7 @@ public class CharacterA extends Duel implements Dueler
 	}
 	public void setStartingHP(int hp)
 	{
-		hp = 
+		this.hp = hp;
 	}
 	public int getHP()
 	{
@@ -46,7 +46,6 @@ public class CharacterA extends Duel implements Dueler
 				if (Math.random() > 0.4)
 				{
 					return Duel.SHOOTING;
-					loadedGun = false;
 				}
 				else
 				{
@@ -65,14 +64,11 @@ public class CharacterA extends Duel implements Dueler
 				else
 				{
 					return Duel.LOADING;
-					loadedGun = true;
 				}
 			}
 		}
-		else
-		{
 			return YEAH_RIGHT;
-		}
+		
 	}
 	public void hit(Object caller)
 	{
