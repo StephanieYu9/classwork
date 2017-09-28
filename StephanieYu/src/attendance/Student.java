@@ -40,5 +40,6 @@ public class Student implements Attendee {
 		{
 			report+="ABSENT\n";
 		}
+		return report;
 	}
 }

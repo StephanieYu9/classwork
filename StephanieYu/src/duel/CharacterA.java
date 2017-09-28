@@ -1,12 +1,15 @@
 package duel;
 
-import duel.Duel;
 
-public class CharacterA extends Duel implements Dueler 
+public class CharacterA implements Dueler 
 {
 	private String name;
 	private int hp;
 	private boolean loadedGun = false;
+	
+	public CharacterA() {
+		
+	}
 	
 	public void taunt() 
 	{
@@ -15,7 +18,7 @@ public class CharacterA extends Duel implements Dueler
 	}
 	public String getName()
 	{
-		name = "Chaddd";
+		this.name = "Chaddd";
 		return name;
 	}
 	public void setStartingHP(int hp)
@@ -45,14 +48,12 @@ public class CharacterA extends Duel implements Dueler
 			{
 				if (Math.random() > 0.4)
 				{
+					loadedGun = false;
 					return Duel.SHOOTING;
 				}
 				else
 				{
-					if (Math.random() < 0.5)
-					{
 						return Duel.GUARDING;
-					}
 				}
 			}
 			else
@@ -63,12 +64,15 @@ public class CharacterA extends Duel implements Dueler
 				}
 				else
 				{
+					loadedGun = true;
 					return Duel.LOADING;
 				}
 			}
 		}
-			return YEAH_RIGHT;
-		
+		else
+		{
+			return Duel.YEAH_RIGHT;
+		}
 	}
 	public void hit(Object caller)
 	{
