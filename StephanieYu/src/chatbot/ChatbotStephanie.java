@@ -6,21 +6,25 @@ public class ChatbotStephanie implements Topic {
 	private String purchaseKeyword;
 	private String nopeKeyword;
 	private String response;
-
+	private String townhouse;
+	
 	public ChatbotStephanie() {
 		String[] temp = {"townhouse", "town", "community", "row house"};
 		keywords = temp;
 		purchaseKeyword = "yes";
 		nopeKeyword = "no";
 		response = "";
+		townhouse = "2 family townhome, 27,000 sqft, 6 beds and 4 baths.";
 	}
 
+	
+	
 	public void talk(String initial) {
-		ChatbotMain.print("I know some really nice townhouses, what would you be interested in?");
+		ChatbotMain.print("I know some really nice townhouses, would you be interested in purchasing one?");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, nopeKeyword, 0) == -1) {
 			if(ChatbotMain.findKeyword(response, purchaseKeyword, 0) >= 0)
-				ChatbotMain.print("I am so glad that you're interested in this townhouse.");
+				ChatbotMain.print("I am so glad that you're interested, the only townhouse for sale is a " + townhouse);
 			else
 				ChatbotMain.print("Why doesn't this appeal to you?");
 			response = ChatbotMain.getInput();
