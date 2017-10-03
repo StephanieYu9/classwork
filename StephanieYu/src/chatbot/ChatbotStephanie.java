@@ -3,26 +3,26 @@ package chatbot;
 public class ChatbotStephanie implements Topic {
 	
 	private String[] keywords;
-	private String goodbyeKeyword;
-	private String secretKeyword;
+	private String purchaseKeyword;
+	private String nopeKeyword;
 	private String response;
 
 	public ChatbotStephanie() {
 		String[] temp = {"townhouse", "town", "community", "row house"};
 		keywords = temp;
-		goodbyeKeyword = "bye";
-		secretKeyword = "pug";
+		purchaseKeyword = "yes";
+		nopeKeyword = "no";
 		response = "";
 	}
 
 	public void talk(String initial) {
-		ChatbotMain.print("Hey! So you want to talk about generic boring things, huh? I love talking about that. So tell me something.");
+		ChatbotMain.print("I know some really nice townhouses, what would you be interested in?");
 		response = ChatbotMain.getInput();
-		while(ChatbotMain.findKeyword(response, goodbyeKeyword, 0) == -1) {
-			if(ChatbotMain.findKeyword(response, secretKeyword, 0) >= 0)
-				ChatbotMain.print("I can't even. I love pugs so much. Wow. You are so cool.");
+		while(ChatbotMain.findKeyword(response, nopeKeyword, 0) == -1) {
+			if(ChatbotMain.findKeyword(response, purchaseKeyword, 0) >= 0)
+				ChatbotMain.print("I am so glad that you're interested in this townhouse.");
 			else
-				ChatbotMain.print("Yeah. That's pretty cool. But there are things I like even more.");
+				ChatbotMain.print("Why doesn't this appeal to you?");
 			response = ChatbotMain.getInput();
 		}
 		ChatbotMain.print("Well, it was nice talking to you, " + ChatbotMain.chatbot.getUsername() + "!");
