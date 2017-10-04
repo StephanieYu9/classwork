@@ -14,22 +14,28 @@ public class ChatbotStephanie implements Topic {
 		purchaseKeyword = "yes";
 		nopeKeyword = "no";
 		response = "";
-		townhouse = "2 family townhome, 27,000 sqft, 6 beds and 4 baths.";
+		townhouse = "2 family townhome with 6 beds and 4 baths.";
 	}
 
 	
 	
 	public void talk(String initial) {
-		ChatbotMain.print("I know some really nice townhouses, would you be interested in purchasing one?");
+		ChatbotMain.print("I know a really nice townhouse, would you like to hear about it?");
 		response = ChatbotMain.getInput();
 		while(ChatbotMain.findKeyword(response, nopeKeyword, 0) == -1) {
 			if(ChatbotMain.findKeyword(response, purchaseKeyword, 0) >= 0)
-				ChatbotMain.print("I am so glad that you're interested, the only townhouse for sale is a " + townhouse);
+				ChatbotMain.print("There is one townhouse for sale right now and it is a " + townhouse + "would you be interested in purchasing this?");
+			response = ChatbotMain.getInput();
+				if(ChatbotMain.findKeyword(response, purchaseKeyword, 0) >= 0)
+				ChatbotMain.print("Thank you for purchasing this townhouse! It was a pleasure doing business with you " + ChatbotMain.chatbot.getUsername() + "!");
+				else
+					if (ChatbotMain.findKeyword(response, nopeKeyword, 0) == -1)
+						ChatbotMain.print("Why don't you find this appealing?");				
 			else
-				ChatbotMain.print("Why doesn't this appeal to you?");
+				ChatbotMain.print("You are not answering my question.");
 			response = ChatbotMain.getInput();
 		}
-		ChatbotMain.print("Well, it was nice talking to you, " + ChatbotMain.chatbot.getUsername() + "!");
+		ChatbotMain.print("Sorry to hear that you're not interested in townhouses, you are really missing out " + ChatbotMain.chatbot.getUsername() + "!");
 		ChatbotMain.chatbot.startChatting();
 	}
 
@@ -39,5 +45,3 @@ public class ChatbotStephanie implements Topic {
 				return true;
 		return false;
 	}
-
-}
