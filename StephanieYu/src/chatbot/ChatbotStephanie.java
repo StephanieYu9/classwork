@@ -45,3 +45,4 @@ public class ChatbotStephanie implements Topic {
 				return true;
 		return false;
 	}
+}
