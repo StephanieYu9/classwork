@@ -8,6 +8,85 @@ public class ArraysMain {
 	private String[] values;
 	
 	public ArraysMain() {
+		tuesdayMethods();
+//		System.out.println(Arrays.toString(testArray));
+	}
+	
+	private void tuesdayMethods() {
+		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11};
+//		cycleThrough(orderTest, 5);
+//		frontToBack(orderTest);
+//		System.out.println(Arrays.toString(orderTest));
+		
+		System.out.println(longestConsecutiveSequence(orderTest) + " is the l.s.c.");
+	}
+	
+	private boolean isConsecutive (int[] arr, int start, int end) {
+		for(int i = start; i < end; i++) {
+			if(arr[i] + 1 != arr[i+1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private int longestConsecutiveSequence(int[] arr) {
+		int maxLength = 1;
+		int count = 1;
+		for(int i = 0; i < arr.length; i++) {
+			while(i + count < arr.length && isConsecutive(arr, i, i + count)) {
+				count++;
+			}
+			if(count > maxLength) {
+				maxLength = count;
+			}
+			i = i + count - 1;
+			count = 1;
+		}
+		return maxLength;
+	}
+	
+	private void cycleThrough(int[] arr, int n) {
+		for(int i = 0; i < n; i++) {
+			frontToBack(arr);
+		}
+	}
+
+	/** 
+	 * removes the element at index 0, pushes all other elements forward.
+	 * @param arr
+	 * @return 
+	 */
+	private void frontToBack(int[] arr) {
+		int x = arr[0];
+		for(int i = 0; i < arr.length-1; i++) {
+			arr[i] = arr[i+1];
+		}
+		arr[arr.length-1] = x;
+	}
+
+	private void warmUpMethods() {
+		int[] orderTest = {1,2,3,4,5,6,7,8,9,10};
+		reverseOrder(orderTest);
+		System.out.println(Arrays.toString(orderTest));
+		System.out.println(Arrays.toString(subArray(orderTest,3,4)));
+	}
+
+	private int[] subArray(int[] arr, int psn, int length) {
+		int[] sub = new int[length];
+		for(int i = 0; i < length; i++) {
+			sub[i] = arr[i+psn];
+		}
+		return sub;
+	}
+
+	public void reverseOrder(int[] arr) {
+		for(int i = 0; i < arr.length/2; i++) {
+			swap(arr,i,arr.length-1-i);
+		}
+	}
+	
+	public void cardMethod() {
 		suits = new String[4];
 		suits[0] = "Clubs";
 		suits[1] = "Hearts";
@@ -22,14 +101,12 @@ public class ArraysMain {
 		values[11] = "Queen";
 		values[10] = "Jack";
 		printDeck();
-		
-//		System.out.println(Arrays.toString(testArray));
 	}
+	
 	private String[] printDeck() {
 		for (String suit: suits) {
 			for (String value: values) {
 				System.out.println(value + " of " + suit);
-				index++;
 			}
 		}
 	}
