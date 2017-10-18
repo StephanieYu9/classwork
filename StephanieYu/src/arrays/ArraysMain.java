@@ -8,12 +8,51 @@ public class ArraysMain {
 	private String[] values;
 	
 	public ArraysMain() {
-		tuesdayMethods();
+		wednesdayMethods();
 //		System.out.println(Arrays.toString(testArray));
 	}
 	
+	private void wednesdayMethods() {
+		int[] diceRolls = new int[10000];
+		populate(diceRolls);
+		int[] data = longestConsecutiveSeqAndIndex(diceRolls);
+		int longest = data[0];
+		System.out.println("The longest sequence is " + longest + " rolls." + " It happened on roll #" + data[1] + " the sequence was: " + Arrays.toString(subArray(diceRolls, data[1], data[0])) + ".");
+		
+	}
+
+	/**
+	 * BIG IDEA:
+	 * Usually a method returns ONE piece of data (i.e. 'int', 'boolean', etc)
+	 * IF we ever want more than one piece of data, one way of doing that is 
+	 * by using an array, as you see here, a method that returns the LENGTH
+	 * of the sequence and its START position (both ints)
+	 * @param arr
+	 * @return
+	 */
+	private int[] longestConsecutiveSeqAndIndex(int[] arr) {
+		//use an int[] to store the data
+		int[] data = new int[2];
+		
+		data[0] = 1;
+		int count = 1;
+		for(int i = 0; i < arr.length; i++) {
+			while(i + count < arr.length && isConsecutive(arr, i, i + count)) {
+				count++;
+			}
+			if(count > data[0]) {
+				data[0] = count;
+				//also store the index where this sequence started.
+				data[1] = i;
+			}
+			i = i + count - 1;
+			count = 1;
+		}
+		return data;
+	}
+
 	private void tuesdayMethods() {
-		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11};
+		int[] orderTest = {1,2,3,4,5,1,6,7,8,9,10,11,12};
 //		cycleThrough(orderTest, 5);
 //		frontToBack(orderTest);
 //		System.out.println(Arrays.toString(orderTest));
