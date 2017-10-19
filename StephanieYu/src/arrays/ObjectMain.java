@@ -13,11 +13,13 @@ public class ObjectMain {
 	private void analyzeCommonalities(Person[] people, Person[] group) {
 		double averageCommonality = 0;
 		double trials = 500;
-	
+		
+		double sumCounts = 0;
 		for(int i = 0; i < trials; i++) {
-			int same = countCommonalities(people, group);
-			
+			group = selectGroup(people, people.length);
+			sumCounts += countCommonalities(people, group);
 		}
+		averageCommonality = sumCounts/500;
 		
 		System.out.println("After " + trials + "trials, shuffling " + people.length + " people on average, " + averageCommonality + " people end up in the same position where they started.");
 	}
