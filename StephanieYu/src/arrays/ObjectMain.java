@@ -6,8 +6,11 @@ public class ObjectMain {
 		Person[] people = new Person[120];
 		populate(people);
 //		people[0] = new Thing("toaster oven");
-		Person[] group = selectGroup(people,120);
-		analyzeCommonalities(people, group);
+		for(Person p: people) {
+			p.mingle(people);
+			System.out.println(p);
+			p.stateYourFriends();
+		}
 	}
 	
 	private void analyzeCommonalities(Person[] people, Person[] group) {
