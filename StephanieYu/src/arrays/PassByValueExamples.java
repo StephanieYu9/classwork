@@ -14,6 +14,11 @@ public class PassByValueExamples {
 		System.out.println("s is now " + s + ", x is " + x + ", arr is " + Arrays.toString(arr));
 	}
 
+	private static void test1(Person p, int x, int[] arr) {
+		String name = p.getFirstName();
+		name = "Original";
+	}
+
 	private static void changeEVERYTHING(String s, int x, int[] arr) {
 		s = "Goodbye";
 		x = -5;

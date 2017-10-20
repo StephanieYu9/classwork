@@ -17,6 +17,14 @@ public class Person {
 	private Person[] friends;
 	private String nickname;
 	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	public Person(String first, String last, Borough home) {
 		this.firstName = first;
 		this.lastName = last;
