@@ -169,8 +169,17 @@ public class CaveRoom {
 		//2. Populate with default caves
 		for(int row = 0; row < c.length; row++) {
 			for(int col = 0; col < c[row].length; col++) {
-				c[row][col] = new CaveRoom("This cave has coordinates " + row + " " + col);
+				c[row][col] = new CaveRoom("This cave has coordinates " + row + "," + col);
 			}
 		}
+		//3. Replace some default rooms with custom rooms
+		
+		//4. set starting room
+		CaveExplorer.currentRoom = c[0][1];
+		CaveExplorer.currentRoom.enter();
+		
+		//5. Set up doors
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
 }

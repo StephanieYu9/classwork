@@ -7,7 +7,7 @@ public class Inventory {
 	}
 	
 	public String getDescription() {
-		return "There is nothing in tour inventory";
+		return "There is nothing in your inventory";
 	}
 	
 }
