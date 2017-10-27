@@ -161,9 +161,16 @@ public class CaveRoom {
 		this.contents = contents;
 	}
 
-
+//YOUR OWN CODE HERE:
 	public static void setUpCaves() {
-		// TODO Auto-generated method stub
-		
+		//1. Determine size of cave
+		CaveExplorer.caves = new CaveRoom [5][5];
+		CaveRoom[][] c = CaveExplorer.caves; //create shortcut for accessing CaveExplorer.caves
+		//2. Populate with default caves
+		for(int row = 0; row < c.length; row++) {
+			for(int col = 0; col < c[row].length; col++) {
+				c[row][col] = new CaveRoom("This cave has coordinates " + row + " " + col);
+			}
+		}
 	}
 }
