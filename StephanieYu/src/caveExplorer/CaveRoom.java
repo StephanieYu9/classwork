@@ -182,4 +182,9 @@ public class CaveRoom {
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 	}
+
+
+	public Door getDoor(int direction) {
+		return doors[direction];
+	}
 }
