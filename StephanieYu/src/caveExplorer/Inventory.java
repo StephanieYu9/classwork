@@ -27,7 +27,7 @@ public class Inventory {
 						text += "|";
 					}
 					if ( i == 0) {
-						text += " ";
+						text += "   ";
 					}else if(i == 1) {
 						text += " " + cr.getContents() + " ";
 					}else if(i == 2) {
