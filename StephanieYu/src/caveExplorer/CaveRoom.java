@@ -195,7 +195,7 @@ public class CaveRoom {
 		NPC testNPC = new NPC();
 		testNPC.setPosition(3,3);
 		CaveExplorer.npcs = new NPC[1];
-		CaveExplorer.npcs = 
+		CaveExplorer.npcs[0] = testNPC;
 		
 		//4. set starting room
 		CaveExplorer.currentRoom = c[0][1];
