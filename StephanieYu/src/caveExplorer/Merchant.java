@@ -1,8 +1,7 @@
 package caveExplorer;
 
-public class NPC {
+public class Merchant extends NPC {
 	
-	//fields needed to program navigation
 	private CaveRoom[][] floor;
 	private int currentRow;
 	private int currentCol;
@@ -12,12 +11,11 @@ public class NPC {
 	private boolean active;
 	private String activeDescription;
 	private String inactiveDescription;
-	//you might later add fields to make your NPC behave like a chatbot 
-	
-	public NPC() {
+
+	public Merchant() {
 		this.floor = CaveExplorer.caves;
-		this.activeDescription = "There is a person standing in the room, waiting to talk to you, Press 'e' to talk.";
-		this.inactiveDescription = "The person you spoke to earlier is standing here.";
+		this.activeDescription = "There is a merchant standing in the room, waiting to talk to you, Press 'e' to talk.";
+		this.inactiveDescription = "The merchant don't wanna sell you no goods.";
 		//by default, NPC does not have a position,
 		//to indicate this, use coordinates -1, -1
 		this.currentCol = -1;
@@ -31,14 +29,25 @@ public class NPC {
 	}
 
 	public void interact() {
-		CaveExplorer.print("Let's interact! Type 'bye' to stop.");
+		CaveExplorer.print("Are you interested in buying any goods? Type 'no' if you don't.");
 		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("bye")) {
-			CaveExplorer.print("Yeah... I don't do a whole lot.");
+		while(!s.equalsIgnoreCase("no")) {
+			CaveExplorer.print("What would you like to buy? We have chocolate frogs, wands, and owls. Type 1 for chocolate frogs, 2 for wands, and 3 for owls.");
 			s = CaveExplorer.in.nextLine();
+			chooseOptions(s);
 		}
 		CaveExplorer.print("Later, friend!");
 		active = false;
+	}
+
+	private void chooseOptions(String s) {
+		if(s.indexOf("1") != -1 && s.length() == 1 || s.indexOf("2") != -1 && s.length() == 1 ||s.indexOf("3") != -1 && s.length() == 1) {
+			CaveExplorer.print("You can only type 1, 2. or 3. Do you even want these goods?");
+		}else{
+			CaveExplorer.print("Enjoy your purchase! I will be taking 10000 galleons. Don't come back.");
+			Inventory.money -= 10000;
+		}
+		
 	}
 
 	public String getDescription() {
@@ -50,7 +59,7 @@ public class NPC {
 	}
 	
 	public String getSymbol() {
-		return "P";
+		return "M";
 	}
 
 	public void setPosition(int row, int col) {
@@ -88,4 +97,5 @@ public class NPC {
 		}
 		return newPosition;
 	}
+	
 }
