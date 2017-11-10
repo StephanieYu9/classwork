@@ -16,8 +16,13 @@ public class Trait {
 				+ longTailed.equals(shortTailed));
 	}
 	
-	public Trait(int index) {
+	public Trait() {
 		index = (int)(Math.random()*traits.length);
+		description = traits[index];
+	}
+	
+	public Trait(int index) {
+		this.index = index;
 		description = traits[index];
 	}
 	
