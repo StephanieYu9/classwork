@@ -19,7 +19,7 @@ public class Prey extends ReproductionAnimal {
 		int numPredators = 10;
 		int numPrey = 25;
 		for(int i = 0; i < numPredators; i++) {
-			Predator predator = new Predator(wilderness, "wold", new Trait(), new Trait());
+			Predator predator = new Predator(wilderness, "wolf", new Trait(), new Trait());
 			wilderness.addAnimal(predator);
 		}
 		for(int i = 0; i < numPrey; i++) {
